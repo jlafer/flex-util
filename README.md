@@ -13,7 +13,10 @@ npm install --save jlafer-flex-util
 formatPhoneNum :: string -> string
 ```
 ```javascript
-  formatPhoneNum('8005551212'); // (800) 555-1212
+  formatPhoneNum('8005551212');   // (800) 555-1212
+```
+```javascript
+  formatPhoneNum('+18005551212'); // (800) 555-1212
 ```
 
 ## Testing
