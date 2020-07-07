@@ -1,4 +1,9 @@
+import {ClickablePhoneNum, field} from './components';
 import {formatPhoneNum} from './misc';
 import {callApiFormEncoded, callApiJson} from './network';
 
-export {callApiFormEncoded, callApiJson, formatPhoneNum};
+export {
+  ClickablePhoneNum, field,
+  formatPhoneNum,
+  callApiFormEncoded, callApiJson
+};
