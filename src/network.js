@@ -1,4 +1,4 @@
-export async function callApiFormEncoded(url = '', method, data = {}) {
+export async function callApiFormEncoded(url = '', method, data) {
   const options = {
     method: method, 
     body: new URLSearchParams(data),
@@ -10,7 +10,7 @@ export async function callApiFormEncoded(url = '', method, data = {}) {
   return await response.json();
 }
 
-export async function callApiJson(url = '', method, data = {}) {
+export async function callApiJson(url = '', method, data) {
   const options = {
     method: method, 
     body: JSON.stringify(data),
