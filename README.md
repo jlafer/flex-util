@@ -19,6 +19,18 @@ formatPhoneNum :: string -> string
   formatPhoneNum('+18005551212'); // (800) 555-1212
 ```
 
+### log
+```javascript
+import {log} from 'jlafer-flex-util';
+
+log.debug('this is a debug message');
+const obj = {foo: 'bar'};
+log.debug('this is a debug message with data', obj);
+log.info('this is an informational message');
+log.warn('this is a warning message');
+log.error('this is an error message');
+```
+
 ## Testing
 As this package is designed for building library packages, the suggested (i.e., TDD) development pattern would involve putting functions and their test cases in the package and testing locally. `Jest` is already included and can be invoked using `npm test`. The `babel-jest` package is installed along with a `babel.config.js` file, so Jest automatically transpiles ES6-style test files prior to execution. See `src/index.test.js` for a sample test case file.
 
