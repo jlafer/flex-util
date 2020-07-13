@@ -6,6 +6,25 @@ This is a library of utility functions for use in Twilio Flex development.
 
 npm install --save jlafer-flex-util
 
+## Components and JSX Functions
+
+### ClickablePhoneNum(number, onClick)
+```
+ClickablePhoneNum :: (string, function) -> HTML
+```
+```javascript
+<ClickablePhoneNum
+  number={consumerPhone}
+  onClick={(e) => this.clickToDial(consumerPhone, e)}
+/>
+```
+### field(name, label, value)
+```
+field :: (string, string, string) -> HTML
+```
+```javascript
+field('AccountNumber', 'Account', merchantAcct)
+```
 ## Miscellaneous Functions
 
 ### formatPhoneNum(phoneNumber)
@@ -19,6 +38,25 @@ formatPhoneNum :: string -> string
   formatPhoneNum('+18005551212'); // (800) 555-1212
 ```
 
+## Network/Ajax Functions
+
+### callApiFormEncoded(url, method, data)
+```
+callApiFormEncoded :: (string, string, object) -> Promise(any)
+```
+```javascript
+  callApiFormEncoded('https://my-api.com/endpoint', 'POST', {foo: 'bar'});
+```
+### callApiJson(url, method, data)
+```
+callApiJson :: (string, string, object) -> Promise(any)
+```
+```javascript
+  callApiJson('https://my-api.com/endpoint', 'POST', {foo: 'bar'});
+```
+
+## Console Logging
+
 ### log
 ```javascript
 import {log} from 'jlafer-flex-util';
@@ -31,8 +69,20 @@ log.warn('this is a warning message');
 log.error('this is an error message');
 ```
 
-## Testing
-As this package is designed for building library packages, the suggested (i.e., TDD) development pattern would involve putting functions and their test cases in the package and testing locally. `Jest` is already included and can be invoked using `npm test`. The `babel-jest` package is installed along with a `babel.config.js` file, so Jest automatically transpiles ES6-style test files prior to execution. See `src/index.test.js` for a sample test case file.
+## Sync Functions
 
-## Local Usage
-During active development you can also use the `npm run dev` command to run Rollup in "watch" mode - the executable packages are updated as changes are saved to the source files. So, for instance, if you put calling code in `index.js` you could run it in NodeJS using the command `node dist/bundle.cjs.js`.
+### getSyncClientAndMap(mapCallback, itemCallback, mapName, token)
+```
+getSyncClientAndMap :: (function(syncMap), function(syncEvent), string, string) -> undefined
+```
+```javascript
+  getSyncClientAndMap(myMapCallback, myItemCallback, 'TestMap', syncToken);
+```
+
+### setSyncMapItem(map, key, data, ttl)
+```
+setSyncMapItem :: (syncMap, string, any, number) -> undefined
+```
+```javascript
+  setSyncMapItem(mySyncMap, 'item-key, itemData, 300);
+```
