@@ -1,5 +1,5 @@
 export async function callApiFormEncoded(url = '', method, data) {
-  const options = {
+const options = {
     method: method, 
     body: new URLSearchParams(data),
     headers: {

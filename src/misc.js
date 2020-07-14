@@ -9,3 +9,18 @@ export function formatPhoneNum(phoneNumber) {
   const nxx = rawNum.substring(6);
   return `(${areaCode}) ${npa}-${nxx}`  
 }
+
+export function getPluginConfiguration(manager, namespace) {
+  const {serviceConfiguration, configuration} = manager;
+  const svcConfig = (serviceConfiguration && serviceConfiguration.attributes)
+    ? serviceConfiguration.attributes[namespace]
+    : null;
+  if (! svcConfig) {
+    console.log(`WARNING: attributes.${namespace} not configured in configuration service`);
+    console.log(`That will be needed for deployment to flex.twilio.com. See README for instructions.`);
+  }
+  const appConfig = (configuration && configuration.attributes)
+  ? configuration.attributes[namespace]
+  : null;
+  return svcConfig || appConfig;
+}

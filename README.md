@@ -32,10 +32,18 @@ field('AccountNumber', 'Account', merchantAcct)
 formatPhoneNum :: string -> string
 ```
 ```javascript
-  formatPhoneNum('8005551212');   // (800) 555-1212
+  const formattedNum = formatPhoneNum('8005551212');   // (800) 555-1212
 ```
 ```javascript
-  formatPhoneNum('+18005551212'); // (800) 555-1212
+  const formattedNum = formatPhoneNum('+18005551212'); // (800) 555-1212
+```
+
+### getPluginConfiguration(manager, namespace)
+```
+getPluginConfiguration :: (manager, string) -> object
+```
+```javascript
+  const configuration = getPluginConfiguration(manager, 'my_plugin');
 ```
 
 ## Network/Ajax Functions
@@ -84,5 +92,5 @@ getSyncClientAndMap :: (function(syncMap), function(syncEvent), string, string) 
 setSyncMapItem :: (syncMap, string, any, number) -> undefined
 ```
 ```javascript
-  setSyncMapItem(mySyncMap, 'item-key, itemData, 300);
+  setSyncMapItem(mySyncMap, 'item-key', itemData, 300);
 ```
