@@ -1,3 +1,5 @@
+import {assoc, mergeRight} from 'ramda';
+
 export function formatPhoneNum(phoneNumber) {
   if (phoneNumber.startsWith('('))
     return phoneNumber;
@@ -24,3 +26,8 @@ export function getPluginConfiguration(manager, namespace) {
   : null;
   return svcConfig || appConfig;
 }
+
+export const addDataToTaskConversations = (task, data) => {
+  const conversations = mergeRight(task.attributes.conversations, data);
+  return assoc('conversations', conversations, task.attributes);
+};

@@ -27,6 +27,18 @@ field('AccountNumber', 'Account', merchantAcct)
 ```
 ## Miscellaneous Functions
 
+### addDataToTaskConversations(task, data)
+This function sets one or more keys (all those in the `data` object parameter) in the `conversations` object within the `attributes` property of the `task` parameter. It then returns a copy of the task attributes reflecting the new data. This can be useful for things like updating the task reason or passing custom attributes and measures to Flex Insights.
+
+NOTE: this is a pure function; it does NOT mutate the underlying TaskRouter Task object. For that, you can call the `ITask.setAttributes` method, as demonstrated below.
+```
+addDataToTaskConversations :: (ITask, object) -> object
+```
+```javascript
+  const attributes = addDataToTaskConversations(task, {conversation_attribute_3: 'SaleMade'});
+  task.setAttributes(attributes);
+```
+
 ### formatPhoneNum(phoneNumber)
 ```
 formatPhoneNum :: string -> string
