@@ -66,7 +66,7 @@ The library provides a collection of functions -- most of them curried -- for co
 While the functions can be used in an imperative manner, they've been designed to support a functional programming style. So the suggested usage might look something like this:
 ```javascript
 import {pipe} from 'ramda';
-import {setBaseOptions, addBearerToken, addHeader, makeApi} from './index'
+import {setBaseOptions, addBearerToken, addHeader, setEncoding, callApi} from 'jlafer-flex-util';
 
 const configureApi = pipe(
   setBaseOptions,
