@@ -187,12 +187,20 @@ log.error('this is an error message');
 
 ## Sync Functions
 
-### getSyncClientAndMap(mapCallback, itemCallback, mapName, token)
+### getSyncDoc(docCallback, docName, syncToken, options) (curried)
 ```
-getSyncClientAndMap :: (function(syncMap), function(syncEvent), string, string) -> undefined
+getSyncDoc :: function(document) -> string -> string -> object -> undefined
 ```
 ```javascript
-  getSyncClientAndMap(myMapCallback, myItemCallback, 'TestMap', syncToken);
+  getSyncDoc(docCallback, 'AgentStats@johndoe', mySyncToken, {mode: 'open_or_create', ttl: 3600});
+```
+
+### getSyncClientAndMap(mapCallback, itemCallback, mapName, syncToken) (curried)
+```
+getSyncClientAndMap :: function(map) -> function(item) -> string -> string -> undefined
+```
+```javascript
+  getSyncClientAndMap(myMapCallback, myItemCallback, 'MyTestMap', mySyncToken);
 ```
 
 ### setSyncMapItem(map, key, data, ttl)
@@ -200,5 +208,5 @@ getSyncClientAndMap :: (function(syncMap), function(syncEvent), string, string) 
 setSyncMapItem :: (syncMap, string, any, number) -> undefined
 ```
 ```javascript
-  setSyncMapItem(mySyncMap, 'item-key', itemData, 300);
+  setSyncMapItem(mySyncMap, 'my-item-key', itemData, 300);
 ```

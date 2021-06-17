@@ -4,7 +4,7 @@ import {addDataToTaskConversations, formatPhoneNum, getPluginConfiguration} from
 import {callApiFormEncoded, callApiJson, setBaseOptions, addBasicCredentials,
   addBearerToken, addTokenAsData, addFlexToken, addHeader, setEncoding, makeOptions, callApi
 } from './network';
-import {getSyncClientAndMap, setSyncMapItem} from './sync';
+import {getSyncDoc, getSyncClientAndMap, setSyncMapItem} from './sync';
 
 export {
   ClickablePhoneNum, field,
@@ -12,5 +12,5 @@ export {
   addDataToTaskConversations, formatPhoneNum, getPluginConfiguration,
   callApiFormEncoded, callApiJson, setBaseOptions, addBasicCredentials,
   addBearerToken, addTokenAsData, addFlexToken, addHeader, setEncoding, makeOptions, callApi,
-  getSyncClientAndMap, setSyncMapItem
+  getSyncDoc, getSyncClientAndMap, setSyncMapItem
 };
