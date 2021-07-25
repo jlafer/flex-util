@@ -1,7 +1,29 @@
-import {field} from './index';
+import React from "react";
+import { render, screen } from '@testing-library/react';
+import '@testing-library/jest-dom/extend-expect';
+//import userEvent from '@testing-library/user-event';
+import 'regenerator-runtime/runtime'
 
-//TODO this test case is failing on the text comparison...I think it's the escapes
-// that I don't have in the expected...don't even like this type of test - way too fragile
-test("field creates output", () => {
-  expect(field('fld1', 'Field1', 'foo')).toEqual('<div className="row m-1 p-1"><label className="col-sm-2 col-form-label" htmlFor="fld1">Field1</label><div className="col-sm-10"><input className="form-control-plaintext" id="fld1" name="fld1" readOnly={true} type="text" value="foo" /></div></div>');
-}); 
+import {readOnlyField, ClickablePhoneNum} from './index';
+
+describe('readOnlyField', () => {
+  it("creates output", () => {
+    const fld = readOnlyField('fld1', 'Field1', 'foo');
+    render(fld);
+    //screen.debug();
+    expect(screen.getByText('Field1')).toBeInTheDocument();
+    expect(screen.getByLabelText('Field1')).toBeInTheDocument();
+    expect(screen.getByRole('textbox')).toBeInTheDocument();
+    expect(screen.getByRole('textbox')).toHaveClass('form-control-plaintext');
+  });
+})
+
+describe('ClickablePhoneNum', () => {
+  it("creates output", async () => {
+    render(<ClickablePhoneNum number="+18005551212" />);
+    //screen.debug();
+    const button = screen.getByRole('button');
+    expect(button).toBeInTheDocument();
+    expect(button).toHaveTextContent('+18005551212');
+  });
+})

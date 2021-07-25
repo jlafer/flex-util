@@ -6,15 +6,10 @@ import * as R from 'ramda';
 const SyncClient = require('twilio-sync');
 
 export const getSyncDoc = R.curry((docCallback, docName, token, options) => {
-  const clientOptions = {
-    logLevel: "info"
-  };
-  const client = new SyncClient(token, clientOptions);
-
+  const client = new SyncClient(token, {logLevel: 'info'});
   client.on("connectionStateChanged", state => {
     console.log('getSyncClientAndDoc.connectionState: ', {state});
   });
-
   const docOptions = {id: docName, ...options};
   return client.document(docOptions).then(doc => {
     console.log('getSyncClientAndDoc: opened doc:', {sid: doc.sid});
@@ -24,15 +19,10 @@ export const getSyncDoc = R.curry((docCallback, docName, token, options) => {
 });
 
 export const getSyncClientAndMap = R.curry((mapCallback, itemCallback, mapName, token) => {
-  const options = {
-    logLevel: "info"
-  };
-  const client = new SyncClient(token, options);
-
+  const client = new SyncClient(token, {logLevel: 'info'});
   client.on("connectionStateChanged", state => {
     console.log('getSyncClientAndMap.connectionState: ', {state});
   });
-
   client.map({id: mapName, ttl: 1800}).then(map => {
     console.log('getSyncClientAndMap: opened map:', {sid: map.sid});
     map.on("itemAdded", itemCallback);
@@ -41,6 +31,7 @@ export const getSyncClientAndMap = R.curry((mapCallback, itemCallback, mapName, 
   });
 });
 
+// TODO this should be deprecated - it's adding no value
 export const setSyncMapItem = (map, key, data, ttl) => {
   map.set(key, data, {ttl})
   .then(function(item) {

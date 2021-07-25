@@ -20,13 +20,20 @@ ClickablePhoneNum :: (string, function) -> HTML
   onClick={(e) => this.clickToDial(consumerPhone, e)}
 />
 ```
+### readOnlyField(name, label, value)
+This function returns JSX for a read-only text field and associated label. 
+```
+readOnlyField :: (string, string, string) -> HTML
+```
+```javascript
+readOnlyField('AccountNumber', 'Account', 'M1234567')
+```
 ### field(name, label, value)
 ```
 field :: (string, string, string) -> HTML
 ```
-```javascript
-field('AccountNumber', 'Account', merchantAcct)
-```
+NOTE: `field` is an alias for the newer `readOnlyField`. It's now deprecated and you should migrate your code to use `readOnlyField`.
+
 ## Miscellaneous Functions
 
 ### addDataToTaskConversations(task, data)

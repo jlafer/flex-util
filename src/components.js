@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const field = (name, label, value) => {
+export const readOnlyField = (name, label, value) => {
   return (
     <div className="row m-1 p-1">
       <label className="col-sm-2 col-form-label" htmlFor={name}>{label}</label>
@@ -10,6 +10,9 @@ export const field = (name, label, value) => {
     </div>
   );
 };
+
+// for backward compatibility
+export const field = readOnlyField;
 
 export function ClickablePhoneNum(props) {
   const {number, onClick} = props;

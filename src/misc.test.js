@@ -1,4 +1,4 @@
-import {formatPhoneNum} from './index';
+import {formatPhoneNum} from './misc';
 
 test("formatPhoneNum formats all-digits number", () => {
   expect(formatPhoneNum('8005551212')).toEqual('(800) 555-1212');
