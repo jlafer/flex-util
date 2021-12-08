@@ -3,7 +3,7 @@ import * as R from 'ramda';
 //import SyncClient from "twilio-sync";
 
 // NOTE: these pkgs must be required - not imported
-const SyncClient = require('twilio-sync');
+const {SyncClient} = require('twilio-sync');
 
 export const getSyncDoc = R.curry((docCallback, docName, token, options) => {
   const client = new SyncClient(token, {logLevel: 'info'});
