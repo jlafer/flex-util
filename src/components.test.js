@@ -1,3 +1,7 @@
+/**
+ * @jest-environment jsdom
+ */
+
 import React from "react";
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
@@ -6,7 +10,7 @@ import 'regenerator-runtime/runtime'
 
 import {readOnlyField, ClickablePhoneNum} from './index';
 
-describe('readOnlyField', () => {
+describe('readOnlyField tests', () => {
   it("creates output", () => {
     const fld = readOnlyField('fld1', 'Field1', 'foo');
     render(fld);
@@ -18,7 +22,7 @@ describe('readOnlyField', () => {
   });
 })
 
-describe('ClickablePhoneNum', () => {
+describe('ClickablePhoneNum tests', () => {
   it("creates output", async () => {
     render(<ClickablePhoneNum number="+18005551212" />);
     //screen.debug();
